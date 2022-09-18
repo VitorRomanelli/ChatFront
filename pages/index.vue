@@ -45,6 +45,7 @@
                     background-color="background"
                     filled
                     rounded
+                    @keyup.enter="submit"
                     @click:append="viewPass = !viewPass"
                   >
                   </v-text-field>

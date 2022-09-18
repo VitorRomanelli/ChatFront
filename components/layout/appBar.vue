@@ -36,7 +36,7 @@
         <p class="label">{{ user.email }}</p>
 
         <div>
-          <v-btn text @click="logout">LogOut</v-btn>
+          <v-btn style="text-transform: none" text @click="logout">LogOut</v-btn>
         </div>
       </v-card>
     </v-menu>
