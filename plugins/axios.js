@@ -1,15 +1,15 @@
-import https from 'https';
+import https from 'https'
 
-export default function ({ $axios, $toast, store, error: nuxtError  }) {
-        // Set baseURL (both client and server)
-    $axios.setBaseURL(process.env.API_KEY)
+export default function ({ $axios, $toast, store, error: nuxtError }) {
+  // Set baseURL (both client and server)
+  $axios.setBaseURL(process.env.API_KEY)
 
-    $axios.defaults.httpsAgent = new https.Agent({ rejectUnauthorized: false });
+  $axios.defaults.httpsAgent = new https.Agent({ rejectUnauthorized: false })
 
-    $axios.onRequest((config) => {
-    const token = store.state.auth.token;
-    if(token) {
-      config.headers.Authorization = 'Bearer ' + token;
+  $axios.onRequest((config) => {
+    const token = store.state.auth.token
+    if (token) {
+      config.headers.Authorization = 'Bearer ' + token
     }
 
     store._vm.$nextTick(() => {
@@ -25,9 +25,9 @@ export default function ({ $axios, $toast, store, error: nuxtError  }) {
       if (store._vm.$nuxt) {
         store._vm.$nuxt.$loading.finish()
       }
-    });
+    })
 
-    return response;
+    return response
   })
 
   $axios.onError((error) => {
@@ -37,11 +37,19 @@ export default function ({ $axios, $toast, store, error: nuxtError  }) {
       }
     })
 
-    if(error.response) {
+    if (error.response) {
       const code = error.response.data.status
-      const message = error.response.data.message
+      const message = error.response.data
 
-      $toast.error(message + ' - ' + 'Código: ' + code)
+      if (message && code) {
+        $toast.error(message + ' - ' + 'Código: ' + code)
+      }
+
+      if (message) {
+        $toast.error(message)
+      } else {
+        $toast.error('Ocorreu um erro!')
+      }
     }
   })
 }

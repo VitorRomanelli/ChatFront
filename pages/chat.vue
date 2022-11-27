@@ -1,5 +1,9 @@
 <template>
   <v-container>
+    <v-dialog v-model="dialog" max-width="450">
+      <ContactAdd />
+    </v-dialog>
+
     <v-row class="ma-0" dense>
       <v-col cols="12" sm="4">
         <v-text-field
@@ -25,9 +29,25 @@
 
       <v-col cols="12" sm="8">
         <div class="mb-4 d-flex justify-end">
-          <v-btn fab depressed color="syswhite" height="56">
-            <v-icon>mdi-dots-vertical</v-icon>
-          </v-btn>
+          <v-menu left offset-y>
+            <template #activator="{ on, attrs }">
+              <v-btn
+                fab
+                depressed
+                v-bind="attrs"
+                color="syswhite"
+                height="56"
+                v-on="on"
+              >
+                <v-icon>mdi-dots-vertical</v-icon>
+              </v-btn>
+            </template>
+            <v-list>
+              <v-list-item link @click="dialog = true">
+                <v-list-item-title>Adicionar contato</v-list-item-title>
+              </v-list-item>
+            </v-list>
+          </v-menu>
         </div>
 
         <v-card elevation="0" class="rounded-xl pa-4 d-flex flex-column">
@@ -78,6 +98,7 @@ export default {
     return {
       emojimessage: '',
       menu: false,
+      dialog: false,
     }
   },
 
