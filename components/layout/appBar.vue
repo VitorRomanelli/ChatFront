@@ -36,7 +36,13 @@
         <p class="label">{{ user.email }}</p>
 
         <div>
-          <v-btn style="text-transform: none" text @click="logout">LogOut</v-btn>
+          <v-btn style="text-transform: none" text nuxt to="/user">
+            Perfil
+          </v-btn>
+        </div>
+
+        <div>
+          <v-btn style="text-transform: none" text @click="logout">Sair</v-btn>
         </div>
       </v-card>
     </v-menu>
@@ -64,5 +70,4 @@ export default {
 }
 </script>
 
-<style lang="sss" scoped>
-</style>
+<style lang="sss" scoped></style>

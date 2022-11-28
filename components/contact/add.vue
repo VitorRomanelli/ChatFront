@@ -13,6 +13,7 @@
         rounded
         class="mb-4"
         hint="Pressione ENTER para pesquisar"
+        :loading="$nuxt.$root.$loading ? $nuxt.$root.$loading.loading : false"
         @keyup.enter="fetchData"
       >
         <template #prepend-inner>
@@ -31,8 +32,13 @@
           Os contatos encontrados seram exibidos aqui...
         </span>
       </v-card>
-      <div v-for="i in contacts" v-else :key="i.id" class="my-2">
-        <ContactCard />
+      <div v-for="contact in contacts" v-else :key="contact.id" class="my-2">
+        <ContactCard
+          :title="contact.name"
+          :message="
+            contact.biography ? contact.biography : 'Olá! estou usando Chat.io!'
+          "
+        />
       </div>
 
       <v-card
@@ -61,7 +67,7 @@ export default {
   methods: {
     fetchData() {
       this.$axios.$post('user/paginated', this.filter).then((response) => {
-        this.contacts = response.users
+        this.contacts = response.data
       })
     },
 

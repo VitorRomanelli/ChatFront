@@ -143,7 +143,9 @@
               depressed
               color="secondary"
               nuxt
-              :loading="$nuxt.$loading ? $nuxt.$loading.loading : false"
+              :loading="
+                $nuxt.$root.$loading ? $nuxt.$root.$loading.loading : false
+              "
               @click="submit"
             >
               {{ tab == 0 ? 'Entrar' : 'Cadastrar' }}
@@ -212,5 +214,4 @@ export default {
 }
 </script>
 
-<style lang="sss" scoped>
-</style>
+<style lang="sss" scoped></style>

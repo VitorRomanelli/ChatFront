@@ -7,6 +7,8 @@ export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
 
+  loading: '~/components/animated/loading.vue',
+
   animejs: true,
 
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -58,7 +60,7 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css:  ['~/styles/global.scss'],
+  css: ['~/styles/global.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
@@ -75,8 +77,6 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
-    // https://go.nuxtjs.dev/stylelint
-    '@nuxtjs/stylelint-module',
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
 
