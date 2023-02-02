@@ -24,7 +24,6 @@
                     v-model="user.userName"
                     label="Usuário"
                     :rules="[(v) => !!v || 'Usuário requerido']"
-                    color="secondary"
                     background-color="background"
                     filled
                     rounded
@@ -40,7 +39,6 @@
                       viewPass ? 'mdi-eye-outline' : 'mdi-eye-off-outline'
                     "
                     prepend-inner-icon="mdi-lock-plus-outline"
-                    color="secondary"
                     :rules="[(v) => !!v || 'Senha requerida']"
                     background-color="background"
                     filled
@@ -59,7 +57,6 @@
                   <v-text-field
                     v-model="user.Name"
                     label="Nome"
-                    color="secondary"
                     background-color="background"
                     :rules="[(v) => !!v || 'Nome requerido']"
                     filled
@@ -70,7 +67,6 @@
                   <v-text-field
                     v-model="user.userName"
                     label="Nome de usuário"
-                    color="secondary"
                     :rules="[(v) => !!v || 'Nome de usuário requerido']"
                     background-color="background"
                     filled
@@ -82,7 +78,6 @@
                     v-model="user.email"
                     label="E-mail"
                     :rules="[(v) => !!v || 'E-mail requerido']"
-                    color="secondary"
                     background-color="background"
                     filled
                     rounded
@@ -98,7 +93,6 @@
                       viewPass ? 'mdi-eye-outline' : 'mdi-eye-off-outline'
                     "
                     prepend-inner-icon="mdi-lock-plus-outline"
-                    color="secondary"
                     :rules="[(v) => !!v || 'Senha requerida']"
                     background-color="background"
                     filled
@@ -124,7 +118,6 @@
                         'Confirmação deve ser igual a senha inserida acima',
                     ]"
                     autocomplete="Confirmação de senha"
-                    color="secondary"
                     background-color="background"
                     filled
                     rounded
@@ -141,7 +134,7 @@
               rounded
               large
               depressed
-              color="secondary"
+              color="primary"
               nuxt
               :loading="
                 $nuxt.$root.$loading ? $nuxt.$root.$loading.loading : false
@@ -158,7 +151,7 @@
             <v-btn
               link
               text
-              color="secondary"
+              color="primary"
               style="text-transform: none"
               @click="tab == 0 ? (tab = 1) : (tab = 0)"
             >

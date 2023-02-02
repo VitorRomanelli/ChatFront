@@ -38,6 +38,26 @@
   letter-spacing: -0.292683px;
 }
 
+.t5 {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 20px;
+
+  text-align: center;
+  letter-spacing: -0.292683px;
+}
+
+.t6 {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 18px;
+
+  text-align: center;
+  letter-spacing: -0.292683px;
+}
+
 .label {
   font-style: normal;
   font-weight: 400;

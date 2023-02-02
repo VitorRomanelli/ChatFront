@@ -1,6 +1,6 @@
 <template>
   <v-card
-    class="user-card rounded-xl d-flex justify-space-between pa-4"
+    class="user-card rounded-xl d-flex pa-4"
     elevation="0"
     @click="$emit('use')"
   >
@@ -10,21 +10,28 @@
       </v-avatar>
     </v-badge>
     <div class="no-wrap mx-2">
-      <strong class="t3">Nome</strong>
+      <strong class="t3">{{ contact.name }}</strong>
       <br />
       <span class="label">
-        Exemplo de mensagem de texto Exemplo de mensagem de texto
+        {{
+          contact.biography ? contact.biography : 'Olá! estou usando Chat.io!'
+        }}
       </span>
     </div>
-    <strong class="t4">09:00</strong>
+    <strong class="t4"></strong>
   </v-card>
 </template>
 
 <script>
 export default {
   name: 'ChatUserCard',
+  props: {
+    contact: {
+      type: Object,
+      default: () => {},
+    },
+  },
 }
 </script>
 
-<style lang="sass" scoped>
-</style>
+<style lang="sass" scoped></style>

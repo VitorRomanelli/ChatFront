@@ -2,28 +2,19 @@
   <div class="d-flex" style="align-self: end">
     <div>
       <v-card
-        v-for="i in 2"
-        :key="i"
-        class="
-          rounded-xl rounded-tr-0
-          pa-4
-          ma-2
-          text-center
-          label
-          background--text
-        "
+        class="rounded-xl rounded-tr-0 pa-4 ma-2 text-center label background--text pb-6"
+        style="position: relative"
         color="terciary"
         elevation="0"
       >
-        Exemplo de mensagem de texto
+        {{ message }}
+
+        <strong
+          class="t6"
+          style="position: absolute; bottom: 5px; right: 20px"
+          >{{ $getHours(time) }}</strong
+        >
       </v-card>
-    </div>
-    <div class="text-center">
-      <v-avatar size="70">
-        <v-img src="https://cdn.vuetifyjs.com/images/lists/2.jpg"></v-img>
-      </v-avatar>
-      <br />
-      <strong class="t4">09:00</strong>
     </div>
   </div>
 </template>
@@ -31,8 +22,18 @@
 <script>
 export default {
   name: 'ChatRightMessage',
+
+  props: {
+    message: {
+      type: String,
+      default: '',
+    },
+    time: {
+      type: String,
+      default: '',
+    },
+  },
 }
 </script>
 
-<style lang="sass" scoped>
-</style>
+<style lang="sass" scoped></style>

@@ -34,10 +34,13 @@
       </v-card>
       <div v-for="contact in contacts" v-else :key="contact.id" class="my-2">
         <ContactCard
+          :contact-id="contact.id"
           :title="contact.name"
           :message="
             contact.biography ? contact.biography : 'Olá! estou usando Chat.io!'
           "
+          :pic="contact.pic ? env + contact.pic : ''"
+          @confirm="confirmAdd"
         />
       </div>
 
@@ -61,10 +64,19 @@ export default {
         pageSize: 10,
       },
       contacts: [],
+      env: '',
     }
   },
 
+  created() {
+    this.env = process.env.API_KEY
+  },
+
   methods: {
+    confirmAdd(chatId) {
+      this.$emit('confirm', chatId)
+    },
+
     fetchData() {
       this.$axios.$post('user/paginated', this.filter).then((response) => {
         this.contacts = response.data

@@ -68,6 +68,7 @@ export default {
     '~/plugins/storage',
     '~/plugins/axios',
     '~/plugins/v-emoji-picker',
+    '~/plugins/helper',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -116,9 +117,9 @@ export default {
       },
       themes: {
         light: {
-          primary: '#3ba68b',
+          primary: '#256cae',
           primary2: '#2196f3',
-          secondary: '#256cae',
+          secondary: '#3ba68b',
           terciary: '#4e426d',
           background: '#f5f7fb',
           sysgrey: '#ccc',

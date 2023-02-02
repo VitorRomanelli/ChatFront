@@ -16,14 +16,14 @@
           v-bind="attrs"
           v-on="on"
         >
-          <v-img v-if="user.pic" :src="user.pic"></v-img>
+          <v-img v-if="user.pic" :src="env + user.pic"></v-img>
           <v-icon v-else color="sysgrey">mdi-account-outline</v-icon>
         </v-avatar>
       </template>
 
       <v-card class="pa-4 pt-6 text-center" elevation="0">
         <v-avatar color="background" size="60">
-          <v-img v-if="user.pic" :src="user.pic"></v-img>
+          <v-img v-if="user.pic" :src="env + user.pic"></v-img>
           <v-icon v-else color="sysgrey">mdi-account-outline</v-icon>
         </v-avatar>
 
@@ -53,12 +53,22 @@
 export default {
   name: 'AppBar',
 
+  data() {
+    return {
+      env: '',
+    }
+  },
+
   computed: {
     user() {
       return this.$store.state.auth.user !== null
         ? this.$store.state.auth.user
         : {}
     },
+  },
+
+  created() {
+    this.env = process.env.API_KEY
   },
 
   methods: {
