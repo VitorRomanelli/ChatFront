@@ -11,6 +11,10 @@ export default {
 
   animejs: true,
 
+  router: {
+    middleware: ['auth'],
+  },
+
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     titleTemplate: '%s - Chat.io',
