@@ -11,7 +11,7 @@ export default {
     interval: 1,
   },
 
-  loading: '~/components/animated/loading.vue',
+  loading: './components/animated/loading.vue',
 
   animejs: true,
 
