@@ -321,7 +321,7 @@ export default {
       this.filter.userId = this.user.id
 
       this.$axios.$post('chat/paginated', this.filter).then((response) => {
-        this.chats = response.data
+        this.chats = response
         this.chats.sort(
           (a, b) =>
             new Date(b.lastMessage.createdAt) -
