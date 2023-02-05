@@ -7,10 +7,6 @@ export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
 
-  generate: {
-    interval: 1,
-  },
-
   // loading: '~/components/animated/loading.vue',
 
   animejs: true,
