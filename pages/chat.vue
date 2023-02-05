@@ -26,7 +26,7 @@
           <div v-for="i in chats" :key="i.id">
             <ChatUserCard
               :contact="i.contact"
-              :unseen-count="i.unseenCount"
+              :unseen-count="i.id == chatId ? 0 : i.unseenCount"
               :last-message="i.lastMessage"
               @use="
                 ;(chatId = i.id),
