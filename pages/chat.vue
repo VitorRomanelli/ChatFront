@@ -210,6 +210,11 @@ export default {
     },
   },
 
+  destroy() {
+    this.socketInstance.close()
+    this.socketUserInstance.close()
+  },
+
   watch: {
     'filter.name': {
       deep: true,
