@@ -245,6 +245,7 @@ export default {
         const socketMessage = await JSON.parse(e.data)
         if (socketMessage.messageId) {
           $context.messages.push(socketMessage.message)
+          $context.getChats()
 
           setTimeout(() => {
             const element = document.getElementById('messages')
