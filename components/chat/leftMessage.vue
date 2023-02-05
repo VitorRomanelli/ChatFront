@@ -7,13 +7,19 @@
         color="background"
         elevation="0"
       >
-        <strong
-          class="t6"
-          style="position: absolute; bottom: 5px; left: 20px"
-          >{{ $getHours(time) }}</strong
-        >
+        <strong class="t6" style="position: absolute; bottom: 5px; left: 20px">
+          {{ $getHours(time) }}
+        </strong>
 
-        {{ message }}
+        <div
+          :style="
+            type == 0
+              ? ''
+              : 'font-size: 40px; padding-top: 10px; padding-bottom: 5px'
+          "
+        >
+          {{ message }}
+        </div>
       </v-card>
     </div>
   </div>
@@ -24,6 +30,14 @@ export default {
   name: 'ChatLeftMessage',
 
   props: {
+    visualized: {
+      type: Boolean,
+      default: false,
+    },
+    type: {
+      type: Number,
+      default: 0,
+    },
     message: {
       type: String,
       default: '',

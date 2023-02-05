@@ -4,9 +4,18 @@
     elevation="0"
     @click="$emit('use')"
   >
-    <v-badge bordered bottom color="primary" dot offset-x="10" offset-y="10">
+    <v-badge
+      bordered
+      bottom
+      color="primary"
+      offset-x="11"
+      offset-y="11"
+      :dot="unseenCount == 0"
+      :content="unseenCount"
+    >
       <v-avatar>
-        <v-img src="https://cdn.vuetifyjs.com/images/lists/2.jpg"></v-img>
+        <v-img v-if="contact.pic" :src="env + contact.pic"></v-img>
+        <v-icon v-else color="sysgrey">mdi-account-outline</v-icon>
       </v-avatar>
     </v-badge>
     <div class="no-wrap mx-2">
@@ -14,11 +23,20 @@
       <br />
       <span class="label">
         {{
-          contact.biography ? contact.biography : 'Olá! estou usando Chat.io!'
+          lastMessage
+            ? lastMessage.content
+            : contact.biography
+            ? contact.biography
+            : 'Olá, estou usando o Chat.io'
         }}
       </span>
     </div>
-    <strong class="t4"></strong>
+
+    <v-spacer></v-spacer>
+
+    <strong class="t4">{{
+      lastMessage ? $getHours(lastMessage.createdAt) : ''
+    }}</strong>
   </v-card>
 </template>
 
@@ -26,10 +44,28 @@
 export default {
   name: 'ChatUserCard',
   props: {
+    unseenCount: {
+      type: Number,
+      default: () => {},
+    },
+    lastMessage: {
+      type: Object,
+      default: () => {},
+    },
     contact: {
       type: Object,
       default: () => {},
     },
+  },
+
+  data() {
+    return {
+      env: '',
+    }
+  },
+
+  created() {
+    this.env = process.env.API_KEY
   },
 }
 </script>

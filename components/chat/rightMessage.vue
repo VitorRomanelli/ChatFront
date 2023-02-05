@@ -7,13 +7,26 @@
         color="terciary"
         elevation="0"
       >
-        {{ message }}
-
-        <strong
-          class="t6"
-          style="position: absolute; bottom: 5px; right: 20px"
-          >{{ $getHours(time) }}</strong
+        <div
+          :style="
+            type == 0
+              ? ''
+              : 'font-size: 40px; padding-top: 10px; padding-bottom: 5px'
+          "
         >
+          {{ message }}
+        </div>
+
+        <strong class="t6" style="position: absolute; bottom: 3px; right: 14px">
+          {{ $getHours(time) }}
+          <!-- <v-icon
+            :color="visualized ? 'success' : 'sysgrey'"
+            :x-small="!visualized"
+            :small="visualized"
+          >
+            mdi-check-all
+          </v-icon> -->
+        </strong>
       </v-card>
     </div>
   </div>
@@ -24,6 +37,14 @@ export default {
   name: 'ChatRightMessage',
 
   props: {
+    visualized: {
+      type: Boolean,
+      default: false,
+    },
+    type: {
+      type: Number,
+      default: 0,
+    },
     message: {
       type: String,
       default: '',
