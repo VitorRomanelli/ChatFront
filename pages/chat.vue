@@ -192,6 +192,8 @@ export default {
         pageSize: 6,
         name: '',
       },
+      socketUserInstance: null,
+      socketInstance: null,
     }
   },
 
@@ -227,6 +229,9 @@ export default {
     },
 
     messageSocket() {
+      if (this.socketInstance) {
+        this.socketInstance.close()
+      }
       this.socketInstance = new WebSocket(
         `${process.env.API_KEY_SOCKET}?chatId=${this.chatId}&userId=${this.user.id}`
       )
@@ -245,13 +250,16 @@ export default {
     },
 
     userSocket() {
-      this.socketInstance = new WebSocket(
+      if (this.socketUserInstance) {
+        this.socketUserInstance.close()
+      }
+      this.socketUserInstance = new WebSocket(
         `${process.env.API_KEY_SOCKET}?chatId=${this.user.id}&userId=${this.user.id}`
       )
 
       const $context = this
 
-      this.socketInstance.onmessage = async function (e) {
+      this.socketUserInstance.onmessage = async function (e) {
         const socketMessage = await JSON.parse(e.data)
         if (socketMessage.isAdding) {
           $context.chats.push(socketMessage.chat)
